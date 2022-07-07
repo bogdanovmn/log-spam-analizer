@@ -16,10 +16,10 @@ class Statistic:
                 )
             )
 
-    def print_top(self, freq_limit=5):
+    def print_top(self, freq_limit=5, show_examples=False):
         total_items = len(self._data)
         filtered_items = sorted(
-            filter(lambda item: item.freq_percent >= freq_limit, self._data),
+            filter(lambda i: i.freq_percent >= freq_limit, self._data),
             key=lambda i: i.count,
             reverse=True
         )
@@ -31,4 +31,6 @@ class Statistic:
                 )
             )
             for item in filtered_items:
-                print("[%3d%%] %s => %s" % (item.freq_percent, item.key, item.count))
+                print "[%3d%%] %s => %s" % (item.freq_percent, item.key, item.count)
+                if show_examples:
+                    print "---\nExamples:\n%s\n---\n" % "\n".join(item.examples(3))

@@ -16,6 +16,13 @@ argsParser.add_argument(
     required=False,
     default=5
 )
+argsParser.add_argument(
+    '-e', '--show-examples',
+    help="show example instances for each finding",
+    required=False,
+    default=False,
+    action='store_true'
+)
 args = argsParser.parse_args()
 
 
@@ -24,4 +31,7 @@ statistic = log_file.map_and_reduce(
     replace_from_pattern=".*\\s(\\S+\\.java:[0-9]+).*",
     replace_to_pattern="\\1",
 )
-statistic.print_top(int(args.freq_limit))
+statistic.print_top(
+    int(args.freq_limit),
+    args.show_examples
+)

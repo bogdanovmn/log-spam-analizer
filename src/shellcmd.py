@@ -10,7 +10,7 @@ class ShellCommand:
         self._command = command
 
     def execute(self):
-        logging.debug("\nRUNNING: %s\n" % self._command)
+        # print "\nRUNNING: %s\n" % self._command
         process = Popen(self._command, shell=True, stdin=PIPE, stdout=PIPE, stderr=STDOUT, close_fds=True)
         self._output = process.stdout.read()
         self._retcode = process.returncode
