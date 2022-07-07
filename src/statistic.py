@@ -26,8 +26,14 @@ class Statistic:
         total_filtered_items = len(filtered_items)
         if self._total_value > 0:
             print(
-                "Top %d/%d findings with occurrence >= %d%%:\n----------------------" % (
-                    total_filtered_items, total_items, freq_limit
+                "Top %d/%d findings with occurrence >= %d%% (%d%% total):\n----------------------" % (
+                    total_filtered_items,
+                    total_items,
+                    freq_limit,
+                    reduce(
+                        lambda a, b: a + b,
+                        map(lambda x: x.freq_percent, filtered_items)
+                    )
                 )
             )
             for item in filtered_items:

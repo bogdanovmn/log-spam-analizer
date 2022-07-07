@@ -26,7 +26,7 @@ argsParser.add_argument(
 args = argsParser.parse_args()
 
 
-log_file = LogFile(args.log_file)
+log_file = LogFile(args.log_file, " INFO ")
 statistic = log_file.map_and_reduce(
     replace_from_pattern=".*\\s(\\S+\\.java:[0-9]+).*",
     replace_to_pattern="\\1",
