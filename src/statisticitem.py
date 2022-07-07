@@ -1,4 +1,4 @@
-from grep import GrepShellCommand
+from cached_grep import CachedGrepShellCommand
 
 
 class StatisticItem:
@@ -9,4 +9,4 @@ class StatisticItem:
         self.freq_percent = freq_percent
 
     def examples(self, count):
-        return GrepShellCommand(self._log_file, self.key, count).execute().output()
+        return CachedGrepShellCommand(self._log_file, self.key, count).execute()

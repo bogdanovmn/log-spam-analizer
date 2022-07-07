@@ -2,13 +2,13 @@ from shellcmd import ShellCommand
 
 
 class GrepShellCommand:
-    def __init__(self, target_file, pattern, limit=5):
+    def __init__(self, target_file, pattern, limit):
         self._file = target_file
         self._pattern = pattern.replace("'", "")
         self._limit = limit
 
     def execute(self):
-        return ShellCommand("%s -m%d" % (self._base_command(), self._limit)).execute()
+        return ShellCommand("%s -m%d" % (self._base_command(), self._limit)).execute().output()
 
     def statistic(self, replace_from_pattern, replace_to_pattern):
         result = ShellCommand(

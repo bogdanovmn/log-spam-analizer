@@ -1,4 +1,3 @@
-import logging
 from subprocess import Popen, PIPE, STDOUT
 
 
