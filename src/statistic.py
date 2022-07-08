@@ -2,7 +2,7 @@ from statisticitem import StatisticItem
 
 
 class Statistic:
-    def __init__(self, target_file, raw_data):
+    def __init__(self, target_file, raw_data, use_cache):
         self._total_value = reduce(lambda a, b: a + b, raw_data.values())
         self._file = target_file
         self._data = []
@@ -12,7 +12,8 @@ class Statistic:
                     key=k,
                     count=v,
                     freq_percent=100 * v / self._total_value,
-                    log_file=target_file
+                    log_file=target_file,
+                    use_cache=use_cache
                 )
             )
 

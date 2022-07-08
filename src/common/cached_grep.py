@@ -8,7 +8,8 @@ from grep import GrepShellCommand
 class CachedGrepShellCommand:
     _temp_dir = "/tmp/log-spam-analyze"
 
-    def __init__(self, target_file, pattern, limit=5):
+    def __init__(self, target_file, pattern, limit=5, rewrite=False):
+        self._rewrite = rewrite
         self._grep_command = GrepShellCommand(target_file, pattern, limit)
         self._cache_base_key = hashlib.md5(target_file + pattern + str(limit)).hexdigest()
 
@@ -33,7 +34,7 @@ class CachedGrepShellCommand:
             os.makedirs(self._temp_dir)
 
         cache_file_name = "%s/%s" % (self._temp_dir, cache_key)
-        if os.path.exists(cache_file_name):
+        if not self._rewrite and os.path.exists(cache_file_name):
             cache_file = open(cache_file_name, "r")
             result = json.loads(cache_file.read())
             cache_file.close()
