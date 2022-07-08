@@ -2,7 +2,7 @@
 
 import argparse
 
-from logfile import LogFile
+from analyze.logfile import LogFile
 
 argsParser = argparse.ArgumentParser()
 argsParser.add_argument(
