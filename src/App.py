@@ -11,8 +11,14 @@ argsParser.add_argument(
     required=True
 )
 argsParser.add_argument(
+    '-g', '--grep-pattern',
+    help="regexp to filter out log lines",
+    required=False,
+    default="^\\S"
+)
+argsParser.add_argument(
     '-l', '--freq-limit',
-    help="frequency occurrence in percent limit",
+    help="frequency occurrence in percent limit (default: 5)",
     required=False,
     default=5
 )
@@ -32,8 +38,7 @@ argsParser.add_argument(
 )
 args = argsParser.parse_args()
 
-
-log_file = LogFile(args.log_file, " INFO ", use_cache=not args.rewrite_cache)
+log_file = LogFile(args.log_file, args.grep_pattern, use_cache=not args.rewrite_cache)
 statistic = log_file.map_and_reduce(
     replace_from_pattern=".*\\s(\\S+\\.java:[0-9]+).*",
     replace_to_pattern="\\1",
