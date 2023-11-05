@@ -45,10 +45,10 @@ Note:
 ### Get examples of sources
 In some cases, you may want to know more details about these records.
 ```bash
-$ loganalyze -f api-node1.txt -g ERROR -e
+$ loganalyze -f api.log -g ERROR -e
 Top 2/21 findings with occurrence >= 5% (98% total):
 ----------------------
-[ 73%] DefaultTokenProducer.java:191 => 129771
+[ 73%] BazService.java:191 => 129771
 ---
 Examples:
 2023-11-01 08:00:00.795 ERROR [http-nio-8443-exec-121] BazService.java:191 Unsupported JWT token: The parsed JWT indicates it was signed with the RS256 signature algorithm, but <...>
@@ -56,7 +56,7 @@ Examples:
 2023-11-01 08:00:00.807 ERROR [http-nio-8443-exec-99] BazService.java:191 Unsupported JWT token: The parsed JWT indicates it was signed with the RS256 signature algorithm, but <...>
 ---
 
-[ 25%] SimpleAsyncUncaughtExceptionHandler.java:39 => 44308
+[ 25%] FooService.java:39 => 44308
 ---
 Examples:
 2023-11-01 08:00:01.126 ERROR [longRunningAsyncOperations-53] FooService.java:39 Unexpected exception occurred invoking async method: public void foo.blabla.Klass.method1
