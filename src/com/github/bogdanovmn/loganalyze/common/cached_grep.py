@@ -6,7 +6,7 @@ from grep import GrepShellCommand
 
 
 class CachedGrepShellCommand:
-    _temp_dir = "/tmp/log-spam-analyze"
+    _temp_dir = "/tmp/log-spam-com.github.bogdanovmn.loganalyze.analyze"
 
     def __init__(self, target_file, pattern, limit=5, rewrite=False):
         self._rewrite = rewrite
